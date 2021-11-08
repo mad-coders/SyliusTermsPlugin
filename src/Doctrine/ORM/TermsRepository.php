@@ -28,6 +28,64 @@ class TermsRepository extends EntityRepository implements TermsRepositoryInterfa
         ;
     }
 
+    public function findEnabledByChannel(ChannelInterface $channel): array
+    {
+        return $this->createListQueryBuilder()
+            ->andWhere(':channel MEMBER OF o.channels')
+            ->andWhere('o.enabled = :enabled')
+            ->setParameter('channel', $channel)
+            ->setParameter('enabled', true)
+            ->addOrderBy('o.position', 'asc')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findEnabledByChannelForCompleteForm(ChannelInterface $channel): array
+    {
+        return $this->createListQueryBuilder()
+            ->andWhere(':channel MEMBER OF o.channels')
+            ->andWhere('o.enabled = :enabled')
+            ->andWhere('o.displayInCheckout = :displayInCheckout')
+            ->setParameter('channel', $channel)
+            ->setParameter('enabled', true)
+            ->setParameter('displayInCheckout', true)
+            ->addOrderBy('o.position', 'asc')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findEnabledByChannelForCustomerRegistrationForm(ChannelInterface $channel): array
+    {
+        return $this->createListQueryBuilder()
+            ->andWhere(':channel MEMBER OF o.channels')
+            ->andWhere('o.enabled = :enabled')
+            ->andWhere('o.displayInCustomerSignup = :displayInCustomerSignup')
+            ->setParameter('channel', $channel)
+            ->setParameter('enabled', true)
+            ->setParameter('displayInCustomerSignup', true)
+            ->addOrderBy('o.position', 'asc')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findEnabledByChannelForFooterTemplate(ChannelInterface $channel): array
+    {
+        return $this->createListQueryBuilder()
+            ->andWhere(':channel MEMBER OF o.channels')
+            ->andWhere('o.enabled = :enabled')
+            ->andWhere('o.displayInFooter = :displayInFooter')
+            ->setParameter('channel', $channel)
+            ->setParameter('enabled', true)
+            ->setParameter('displayInFooter', true)
+            ->addOrderBy('o.position', 'asc')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function findOneByChannelAndSlug(ChannelInterface $channel, string $slug): ?TermsInterface
     {
         return $this->createListQueryBuilder()
