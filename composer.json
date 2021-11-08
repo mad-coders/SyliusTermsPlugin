@@ -1,5 +1,5 @@
 {
-    "name": "setono/sylius-terms-plugin",
+    "name": "madcoders/setono-sylius-terms-plugin",
     "type": "sylius-plugin",
     "description": "Sylius terms and conditions plugin",
     "keywords": [
