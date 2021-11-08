@@ -1,4 +1,19 @@
-# Sylius terms and conditions plugin
+# Fork of Setono/SyliusTermsPlugin
+
+This is fork of [Setono/SyliusTermsPlugin](https://github.com/Setono/SyliusTermsPlugin)
+
+Extended functionality
+- you can enable/disable each entry
+- you can decide where Terms are displayed: checkout, customer registration form, footer (as link)
+- position field to sort terms (if more than one used in the same area)
+- upgraded development env to Sylius 1.10
+
+
+There's pull request open which greatly summarizes changes:
+https://github.com/Setono/SyliusTermsPlugin/pull/48
+
+
+------- PLUGIN'S README starts here --------
 
 [![Latest Version][ico-version]][link-packagist]
 [![Latest Unstable Version][ico-unstable-version]][link-packagist]
